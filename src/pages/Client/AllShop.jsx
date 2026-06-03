@@ -59,7 +59,7 @@ const MarketRate = () => {
         return;
       }
       try {
-        const res = await axios.get("http://localhost:2000/api/user/agreements", {
+        const res = await axios.get( `${import.meta.env.VITE_API_URL}/api/user/agreements`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.data.success) {
@@ -79,7 +79,7 @@ const MarketRate = () => {
     const syncAllDataStreams = async () => {
       try {
         const marketRes = await axios.get(
-          "http://localhost:2000/api/market/live",
+          `${import.meta.env.VITE_API_URL}/api/market/live`,
         );
         if (marketRes.data.success) {
           setLiveBase({
@@ -90,7 +90,7 @@ const MarketRate = () => {
         }
 
         const shopsRes = await axios.get(
-          "http://localhost:2000/api/market-rates",
+           `${import.meta.env.VITE_API_URL}/api/market-rates`,
         );
         if (shopsRes.data.success) {
           setShops(shopsRes.data.shops || []);
@@ -150,7 +150,7 @@ const MarketRate = () => {
     try {
       if (token) {
         await axios.post(
-          "http://localhost:2000/api/user/agreements",
+           `${import.meta.env.VITE_API_URL}/api/user/agreements`,
           { shopId },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -239,7 +239,7 @@ const MarketRate = () => {
       };
 
       const res = await axios.post(
-        "http://localhost:2000/api/admin/trades/new",
+        `${import.meta.env.VITE_API_URL}/api/admin/trades/new`,
         payload,
         {
           headers: {
@@ -440,7 +440,7 @@ const MarketRate = () => {
                 <div className="w-16 h-16 rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 shrink-0 flex items-center justify-center shadow-inner">
                   {shop.adminId?.logo ? (
                     <img
-                      src={`http://localhost:2000/uploads/${shop.adminId.logo}`}
+                      src={ `${import.meta.env.VITE_API_URL}/uploads/${shop.adminId.logo}`}
                       alt="Shop Logo"
                       className="w-full h-full object-cover"
                     />

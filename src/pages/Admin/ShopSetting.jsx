@@ -31,7 +31,7 @@ const ShopSettings = () => {
   useEffect(() => {
     const fetchAdminData = async () => {
       try {
-        const res = await fetch("http://localhost:2000/api/admin/full-data", {
+        const res = await fetch( `${import.meta.env.VITE_API_URL}/api/admin/full-data`, {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -47,7 +47,7 @@ const ShopSettings = () => {
         });
 
         if (result.admin.logo) {
-          setPreview(`http://localhost:2000/uploads/${result.admin.logo}`);
+          setPreview( `${import.meta.env.VITE_API_URL}/uploads/${result.admin.logo}`);
         }
       } catch (err) {
         setError(err.message);
@@ -81,7 +81,7 @@ const ShopSettings = () => {
       data.append("shopContact", formData.shopContact);
       if (formData.logo) data.append("logo", formData.logo);
 
-      const res = await fetch("http://localhost:2000/api/admin/update-shop", {
+      const res = await fetch( `${import.meta.env.VITE_API_URL}/api/admin/update-shop`, {
         method: "PUT",
         headers: { Authorization: `Bearer ${token}` },
         body: data,
@@ -91,7 +91,7 @@ const ShopSettings = () => {
       if (!res.ok) throw new Error(result.message || "Update failed");
 
       setAdmin(result.data);
-      if (result.data.logo) setPreview(`http://localhost:2000/uploads/${result.data.logo}`);
+      if (result.data.logo) setPreview( `${import.meta.env.VITE_API_URL}/uploads/${result.data.logo}`);
       
       setMessage("Configurations saved successfully.");
 

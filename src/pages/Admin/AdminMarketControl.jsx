@@ -34,7 +34,7 @@ const AdminMarketControl = () => {
   useEffect(() => {
     const fetchLiveFeed = async () => {
       try {
-        const res = await axios.get("http://localhost:2000/api/market/live");
+        const res = await axios.get( `${import.meta.env.VITE_API_URL}/api/market/live`);
         if (res.data.success) {
           setBasePrices({
             gold: res.data.data.gold_ounce_usd || 0,
@@ -52,7 +52,7 @@ const AdminMarketControl = () => {
   // Load shops list overview conditionally based on dynamic Context API Auth roles
   useEffect(() => {
     if (isSuperAdmin) {
-      axios.get("http://localhost:2000/api/market-rates")
+      axios.get( `${import.meta.env.VITE_API_URL}/api/market-rates`)
         .then((res) => {
           if (res.data.shops && res.data.shops.length > 0) {
             setShops(res.data.shops);
@@ -63,7 +63,7 @@ const AdminMarketControl = () => {
         .catch(err => console.error("Error fetching shops list:", err));
     } else if (shopId && shopId !== "null" && shopId !== "undefined") {
       setSelectedShopId(shopId);
-      axios.get(`http://localhost:2000/api/market-rates/${shopId}`)
+      axios.get( `${import.meta.env.VITE_API_URL}/api/market-rates/${shopId}`)
         .then((res) => {
           if (res.data.shop) {
             loadShopDataIntoForm(res.data.shop);
@@ -133,7 +133,7 @@ const AdminMarketControl = () => {
     };
 
     try {
-      const res = await axios.put(`http://localhost:2000/api/market-rates/update/${runtimeId}`, submissionPayload);
+      const res = await axios.put( `${import.meta.env.VITE_API_URL}/api/market-rates/update/${runtimeId}`, submissionPayload);
       if (res.data.success) {
         Swal.fire({
           title: "Rates & Agreement Saved!",

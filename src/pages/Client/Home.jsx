@@ -21,7 +21,7 @@ const Home = () => {
 
   const fetchMarketData = async () => {
     try {
-      const res = await fetch("http://localhost:2000/api/market/live");
+      const res = await fetch( `${import.meta.env.VITE_API_URL}/api/market/live`);
       const result = await res.json();
 
       if (!result.success) return;

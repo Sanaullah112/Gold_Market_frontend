@@ -36,17 +36,17 @@ const Login = () => {
       let bodyData = {};
 
       if (role === "superadmin") {
-        endpoint = "http://localhost:2000/api/super/admin/login";
+        endpoint =  `${import.meta.env.VITE_API_URL}/api/super/admin/login`;
         bodyData = { secretKey: formData.secretKey };
       } else if (role === "admin") {
-        endpoint = "http://localhost:2000/api/admin/login";
+        endpoint = `${import.meta.env.VITE_API_URL}/api/admin/login`;
         bodyData = {
           shopOwnerEmail: formData.email,
           password: formData.password,  
         };
       } else {
         // Updated route path to the admin client endpoint route
-        endpoint = "http://localhost:2000/api/admin/loginClients";
+        endpoint = `${import.meta.env.VITE_API_URL}/api/admin/loginClients`;
         bodyData = { email: formData.email, password: formData.password };
       }
 

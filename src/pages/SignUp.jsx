@@ -73,7 +73,7 @@ const SignUp = () => {
         payload.append("profilePic", profileImage);
       }
 
-      const res = await fetch("http://localhost:2000/api/admin/client", {
+      const res = await fetch( `${import.meta.env.VITE_API_URL}/api/admin/client`, {
         method: "POST",
         body: payload, // Send multipart stream directly without headers wrapper
       });

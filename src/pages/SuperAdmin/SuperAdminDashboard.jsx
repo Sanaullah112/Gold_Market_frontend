@@ -28,13 +28,13 @@ const SuperAdminDashboard = () => {
       setError("");
 
       const [marketRes, txRes, adminRes] = await Promise.all([
-        fetch("http://localhost:2000/api/super/admin/updated", {
+        fetch( `${import.meta.env.VITE_API_URL}/api/super/admin/updated`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch("http://localhost:2000/api/super/admin/transactions", {
+        fetch( `${import.meta.env.VITE_API_URL}/api/super/admin/transactions`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        fetch("http://localhost:2000/api/admin/all", {
+        fetch( `${import.meta.env.VITE_API_URL}/api/admin/all`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);

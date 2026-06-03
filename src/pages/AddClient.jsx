@@ -28,7 +28,7 @@ const AddClient = () => {
     const finalStatus = formData.role === "admin" ? "Admin" : "User";
 
     try {
-      const res = await fetch("http://localhost:2000/api/user/client", {
+      const res = await fetch( `${import.meta.env.VITE_API_URL}/api/user/client`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

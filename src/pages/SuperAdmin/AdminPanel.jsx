@@ -21,7 +21,7 @@ const AdminPanel = () => {
     const fetchCurrentPrices = async () => {
       try {
         // Assuming your GET route returns live data
-        const res = await fetch("http://localhost:2000/api/market/live");
+        const res = await fetch( `${import.meta.env.VITE_API_URL}/api/market/live`);
         const result = await res.json();
         if (result.success) {
           setBasePrices({
@@ -55,7 +55,7 @@ const handleUpdate = async (e) => {
   try {
     const token = localStorage.getItem("token");
 
-    const res = await fetch("http://localhost:2000/api/super/admin/adjust", {
+    const res = await fetch( `${import.meta.env.VITE_API_URL}/api/super/admin/adjust`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

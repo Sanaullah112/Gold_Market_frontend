@@ -41,7 +41,7 @@ const TransactionsPage = () => {
   const fetchTransactions = async () => {
     try {
       const res = await fetch(
-        "http://localhost:2000/api/super/admin/transactions",
+        `${import.meta.env.VITE_API_URL}/api/super/admin/transactions`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -90,7 +90,7 @@ const TransactionsPage = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:2000/api/super/admin/transactions/${editingId}`,
+        `${import.meta.env.VITE_API_URL}/api/super/admin/transactions/${editingId}`,
         {
           method: "PUT",
           headers: {
@@ -136,7 +136,7 @@ const TransactionsPage = () => {
       if (result.isConfirmed) {
         try {
           const res = await fetch(
-            `http://localhost:2000/api/super/admin/transactions/${id}`,
+            `${import.meta.env.VITE_API_URL}/api/super/admin/transactions/${id}`,
             {
               method: "DELETE",
               headers: {

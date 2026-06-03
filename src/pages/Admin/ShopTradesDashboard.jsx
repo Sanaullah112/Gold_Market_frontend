@@ -29,7 +29,7 @@ const ShopTradesDashboard = () => {
     setLoading(true);
 
     const response = await axios.get(
-      `http://localhost:2000/api/admin/shop/${shopId}/trades?type=${filterType}`,
+       `${import.meta.env.VITE_API_URL}/api/admin/shop/${shopId}/trades?type=${filterType}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -131,7 +131,7 @@ const ShopTradesDashboard = () => {
                     <div className="w-16 h-16 rounded-2xl bg-zinc-900 border border-white/5 overflow-hidden flex items-center justify-center shrink-0">
                       {customer?.profilePic ? (
                         <img
-                          src={`http://localhost:2000/uploads/${customer.profilePic}`}
+                          src={ `${import.meta.env.VITE_API_URL}/uploads/${customer.profilePic}`}
                           alt="Customer Avatar"
                           className="w-full h-full object-cover"
                         />

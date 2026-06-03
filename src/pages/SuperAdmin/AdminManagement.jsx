@@ -49,7 +49,7 @@ const AdminManagement = () => {
 
   const fetchAdmins = async () => {
     try {
-      const res = await fetch("http://localhost:2000/api/admin/all", {
+      const res = await fetch( `${import.meta.env.VITE_API_URL}/api/admin/all`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -69,7 +69,7 @@ const AdminManagement = () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:2000/api/admin/create", {
+      const res = await fetch( `${import.meta.env.VITE_API_URL}/api/admin/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -129,7 +129,7 @@ const AdminManagement = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(`http://localhost:2000/api/admin/toggle-status/${id}`, {
+          const res = await fetch( `${import.meta.env.VITE_API_URL}/api/admin/toggle-status/${id}`, {
             method: "PATCH",
             headers: { Authorization: `Bearer ${token}` },
           });

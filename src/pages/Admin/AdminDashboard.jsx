@@ -24,7 +24,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchAdminData = async () => {
       try {
-        const res = await fetch("http://localhost:2000/api/admin/full-data", {
+        const res = await fetch( `${import.meta.env.VITE_API_URL}/api/admin/full-data`, {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -204,7 +204,7 @@ const AdminDashboard = () => {
                   <div className="w-full h-full rounded-[1.8rem] overflow-hidden bg-zinc-900 relative">
                     {admin?.logo ? (
                       <img
-                        src={`http://localhost:2000/uploads/${admin.logo}`}
+                        src={` ${import.meta.env.VITE_API_URL}/uploads/${admin.logo}`}
                         alt="Logo"
                         className="w-full h-full object-cover"
                       />
