@@ -27,6 +27,7 @@ import AddClient from "./pages/AddClient";
 import AdminMarketControl from "./pages/Admin/AdminMarketControl"; // The new update form panel
 import ShopTradesDashboard from "./pages/Admin/ShopTradesDashboard";
 import Footer from "./components/Footer";
+import GoldConverterPage from "./pages/Client/TMR";
 
 const App = () => {
   const location = useLocation();
@@ -47,6 +48,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/all-shop" element={<AllShop />} />
+        <Route path="/tmr" element={<GoldConverterPage />} />
 
         {/* --- Super Admin Isolated Workspace Entry --- */}
         <Route path="/super-admin/login" element={<SuperAdminLogin />} />

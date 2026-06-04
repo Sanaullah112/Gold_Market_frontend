@@ -3,6 +3,7 @@ import { AiOutlineGold } from "react-icons/ai";
 import Currency from "./Currency"; 
 import MarketRate from "./MarketRate"; 
 import { useAuth } from "../context/ContextApi"; // Context Connection
+import GoldConverterPage from "./TMR";
 
 const Home = () => {
   const { theme } = useAuth(); // Extract active theme string
@@ -144,6 +145,18 @@ const Home = () => {
           />
           Shop Rates
         </label>
+
+
+        <label className="flex items-center gap-2 cursor-pointer">
+          <input
+            type="radio"
+            value="GoldConverterPage"
+            checked={mode === "GoldConverterPage"}
+            onChange={(e) => setMode(e.target.value)}
+            className="accent-amber-600 dark:accent-cyan-500 theme-blue:accent-cyan-400 theme-emerald:accent-emerald-400"
+          />
+          TMR
+        </label>
       </div>
 
       {/* --- DYNAMIC RENDER WINDOW CONTAINER --- */}
@@ -155,6 +168,9 @@ const Home = () => {
             
             case "marketRate":
               return <MarketRate />;
+
+               case "GoldConverterPage":
+              return <GoldConverterPage />;
             
             case "gold":
             case "silver":

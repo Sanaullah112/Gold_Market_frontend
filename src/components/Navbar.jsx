@@ -58,6 +58,7 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
             <NavLink to="/" className={linkClasses}>Home</NavLink>
+            <NavLink to="/tmr" className={linkClasses}>TMR</NavLink>
 
             {isSuperAdmin && <NavLink to="/super-admin/dashboard" className={linkClasses}>Super Admin</NavLink>}
             {isAdmin && <NavLink to="/admin/dashboard" className={linkClasses}>Admin Panel</NavLink>}
